@@ -48,10 +48,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51780cec391df842801b094be5cc070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster1: {fileID: 0}
-  monster2: {fileID: 0}
-  moveSpeed: 0
-  possibility: 0
+  monster1:
+    hp: 10
+    atk: 2
+    monsterPrefab: {fileID: 8246671141506184860, guid: 04f05686ab0c081428f6957a9da3ecdd, type: 3}
+  monster2:
+    hp: 20
+    atk: 1
+    monsterPrefab: {fileID: 803378982454254936, guid: 4993599370dd8c54b8ecb73d946a790b, type: 3}
+  moveSpeed: 1
+  possibility: 70
 --- !u!1 &5261434785397038343
 GameObject:
   m_ObjectHideFlags: 0

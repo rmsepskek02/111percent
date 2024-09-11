@@ -1558,17 +1558,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca501d971a71cea458ad9fd01702f79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster1: {fileID: 0}
-  monster2: {fileID: 0}
   monsterLine: {fileID: 2136377916553937247, guid: 5b1d86108daa65a4486bcf745e6b4529, type: 3}
-  possibility: 80
   spawnDelay: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1850738980}
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1331543769}
   - {fileID: 919079167}
-  - {fileID: 1850738980}

@@ -29,6 +29,15 @@ public class PlayerController : MonoBehaviour
 
         float x = transform.position.x;
         float xPos = Mathf.Clamp(x, -1.8f, 1.8f);
-        transform.position = new Vector2(xPos, transform.position.y);
+        transform.position = new Vector2(xPos, -2.5f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Monster")
+        {
+            Debug.Log("MONSTER COLLISION");
+            //collision.transform.parent
+        }
     }
 }
