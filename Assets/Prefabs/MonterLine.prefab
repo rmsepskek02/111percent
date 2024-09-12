@@ -56,8 +56,12 @@ MonoBehaviour:
     hp: 20
     atk: 1
     monsterPrefab: {fileID: 803378982454254936, guid: 4993599370dd8c54b8ecb73d946a790b, type: 3}
-  moveSpeed: 1
+  bossMonster:
+    hp: 500
+    atk: 10
+    monsterPrefab: {fileID: 7722585551740493872, guid: 64a4b2637ce85994fb7b861c04813c2a, type: 3}
   possibility: 70
+  moveDir: {x: 0, y: -1, z: 0}
 --- !u!1 &5261434785397038343
 GameObject:
   m_ObjectHideFlags: 0

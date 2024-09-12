@@ -6,12 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     #region 필드
     public int moveSpeed;
+    public Animator animator;
 
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -32,12 +33,33 @@ public class PlayerController : MonoBehaviour
         transform.position = new Vector2(xPos, -2.5f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //TODO 따로 하위오브젝트 만들어서 전투 관련으로 Collosion 수정
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.tag == "Monster")
+        if (collision.gameObject.CompareTag("Monster"))
         {
-            Debug.Log("MONSTER COLLISION");
-            //collision.transform.parent
+            animator.SetBool("isAttack", true);
+            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            StartCoroutine(testDestroy(collision.gameObject));
         }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            animator.SetBool("isAttack", false);
+            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+        }
+    }
+
+    public void OnAttackAnimEvent()
+    {
+        Debug.Log("ATTACK");
+    }
+
+    IEnumerator testDestroy(GameObject go)
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(go);
     }
 }
