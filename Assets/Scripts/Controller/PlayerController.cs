@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     #region ÇÊµå
     public int moveSpeed;
     public Animator animator;
-
+    public int atk;
+    MonsterController mc;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -38,9 +39,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
+            mc = collision.gameObject.GetComponent<MonsterController>();
             animator.SetBool("isAttack", true);
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            StartCoroutine(testDestroy(collision.gameObject));
+            
+            //StartCoroutine(testDestroy(collision.gameObject));
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -48,12 +50,13 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Monster"))
         {
             animator.SetBool("isAttack", false);
-            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
         }
     }
 
     public void OnAttackAnimEvent()
     {
+        Debug.Log("mc = " + mc);
+        mc.TakeDamage(atk);
         Debug.Log("ATTACK");
     }
 
