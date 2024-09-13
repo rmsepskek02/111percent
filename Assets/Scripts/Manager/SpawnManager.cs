@@ -39,13 +39,13 @@ public class SpawnManager : MonoBehaviour
         if (igm.moveSpeed == 0) return;
         if (isBoss == true) return;
 
-        if (igm.currentDistance == 10)
+        if (igm.currentDistance == 100)
         {
             Instantiate(monsterLine, transform.position, Quaternion.identity);
             isBoss = true;
         }
 
-        if (igm.currentDistance >= 5) return;
+        if (igm.currentDistance >= 95) return;
 
         time += Time.deltaTime;
         if (time > 2f)

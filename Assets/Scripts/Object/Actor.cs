@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
-public class Actor : MonoBehaviour
+public class Actor<T> : MonoBehaviour
 {
     #region 필드
+    public Slider hpBar;
+    public TextMeshProUGUI hpText;
     protected InGameManager igm;
     protected Animator animator;
-    //MonsterController mc;
+    protected MonsterController mc;
     public int atk;
+    public float time = 0f;
 
     private int hp = 1000;
     public int Hp
@@ -18,6 +23,10 @@ public class Actor : MonoBehaviour
         protected set => hp = Mathf.Clamp(value, 0, hp);
     }
     #endregion
+    protected virtual void Awake()
+    {
+
+    }
     protected virtual void Start()
     {
         igm = InGameManager.instance;
@@ -25,7 +34,11 @@ public class Actor : MonoBehaviour
     }
     protected virtual void Update()
     {
-        Die();
+        transform.position = transform.parent.transform.position;
+        if (Hp <= 0)
+        {
+            Die();
+        }
     }
 
     // Hp 설정
@@ -33,14 +46,22 @@ public class Actor : MonoBehaviour
     {
         Hp = health;
     }
-
+    public void SetMaxHp(int health)
+    {
+        hpBar.maxValue = health;
+        hpBar.value = health;
+        hpText.text = health.ToString();
+    }
     protected virtual void Die()
     {
-        if (Hp <= 0)
-        {
-            Debug.Log("DIE");
-            igm.guideText.text = "F A I L";
-            gameObject.SetActive(false);
-        }
+        Debug.Log("DIE");
+        gameObject.SetActive(false);
+    }
+    public void GetDamage(int damage)
+    {
+        int getDamagedHp = Hp - damage;
+        Hp = getDamagedHp;
+        hpBar.value = Hp;
+        hpText.text = Hp.ToString();
     }
 }

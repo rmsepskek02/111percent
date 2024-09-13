@@ -14,6 +14,8 @@ public class InGameManager : MonoBehaviour
     public float currentDistance = 0f;
     public Slider bossHpBar;
     public TextMeshProUGUI bossHpText;
+    public int warriorHp;
+    public int archerHp;
     private void Awake()
     {
         instance = this;
@@ -29,6 +31,10 @@ public class InGameManager : MonoBehaviour
     {
         CheckDistance();
         distance.text = $"{Mathf.RoundToInt(currentDistance)}m";
+        if(warriorHp <= 0 && archerHp <= 0)
+        {
+            guideText.text = "F A I L";
+        }
     }
 
     void CheckDistance()
@@ -37,10 +43,10 @@ public class InGameManager : MonoBehaviour
 
         currentDistance += Time.deltaTime;
         distanceSlider.value = currentDistance;
-        currentDistance = Mathf.Clamp(currentDistance, 0, 10);
+        currentDistance = Mathf.Clamp(currentDistance, 0, 100);
 
         if (distanceSlider.gameObject.activeSelf == false) return;
-        if(distanceSlider.value >= 10)
+        if(distanceSlider.value >= 100)
         {
             distance.gameObject.SetActive(false);
             distanceSlider.gameObject.SetActive(false);

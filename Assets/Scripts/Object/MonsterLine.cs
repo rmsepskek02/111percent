@@ -34,7 +34,7 @@ public class MonsterLine : MonoBehaviour
 
     void Spawn()
     {
-        if (igm.currentDistance == 10)
+        if (igm.currentDistance == 100)
         {
             BossSpawn();
         }

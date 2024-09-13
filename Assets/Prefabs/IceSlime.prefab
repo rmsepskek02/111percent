@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1271086569244876287}
   - component: {fileID: 7850324172806990634}
-  - component: {fileID: -9129494041329031860}
   - component: {fileID: 2540110130418206257}
   - component: {fileID: -1456318145319400316}
   - component: {fileID: 6610797973418322377}
+  - component: {fileID: -7940732767680717003}
   m_Layer: 0
   m_Name: IceSlime
   m_TagString: Monster
@@ -88,20 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-9129494041329031860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8246671141506184860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf052058a79e234c952b9971a8fa1e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  igm: {fileID: 0}
-  hp: 100
 --- !u!61 &2540110130418206257
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.15}
+  m_Size: {x: 0.25, y: 0.15}
   m_EdgeRadius: 0
 --- !u!95 &-1456318145319400316
 Animator:
@@ -176,14 +162,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8246671141506184860}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -192,6 +178,21 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 7
+--- !u!114 &-7940732767680717003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8246671141506184860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6a78adeb6f81449ba9df21ae1e748c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  igm: {fileID: 0}
+  damageText: {fileID: 3350285237803326730, guid: 72afce5e664a6844697cdce34eb1a817, type: 3}
+  hp: 200
