@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,18 +10,32 @@ public class PlayerController : MonoBehaviour
     public int moveSpeed;
     public Animator animator;
     public int atk;
+    float time = 0;
     MonsterController mc;
+    InGameManager igm;
+    [SerializeField] private Slider hpBar;
+    [SerializeField] private TextMeshProUGUI hpText;
+
+    private int hp;
+    public int Hp
+    {
+        get => hp;
+        private set => hp = Mathf.Clamp(value, 0, hp);
+    }
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-        
+        igm = InGameManager.instance;
+        hp = 100;
+        SetMaxHealth(hp);
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        Die();
     }
 
     void Move()
@@ -41,8 +57,11 @@ public class PlayerController : MonoBehaviour
         {
             mc = collision.gameObject.GetComponent<MonsterController>();
             animator.SetBool("isAttack", true);
-            
-            //StartCoroutine(testDestroy(collision.gameObject));
+
+            if(collision.gameObject.name == "BossSlime(Clone)")
+            {
+                igm.bossHpBar.gameObject.SetActive(true);
+            }
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -52,17 +71,51 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isAttack", false);
         }
     }
+    
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Debug.Log("STAY");
+        Debug.Log("COL NAME = " + collision.gameObject.name);
+
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            time += Time.deltaTime;
+            
+            if (time > 1f)
+            {
+                Debug.Log("DAMAGED");
+                GetDamage(10);
+                time = 0;
+            }
+        }
+    }
 
     public void OnAttackAnimEvent()
     {
-        Debug.Log("mc = " + mc);
         mc.TakeDamage(atk);
-        Debug.Log("ATTACK");
+    }
+    public void SetMaxHealth(int health)
+    {
+        hpBar.maxValue = health;
+        hpBar.value = health;
+        hpText.text = health.ToString();
     }
 
-    IEnumerator testDestroy(GameObject go)
+    // 플레이어가 대미지를 받으면 대미지 값을 전달 받아 HP에 반영합니다.
+    public void GetDamage(int damage)
     {
-        yield return new WaitForSeconds(3f);
-        Destroy(go);
+        int getDamagedHp = Hp - damage;
+        Hp = getDamagedHp;
+        hpBar.value = Hp;
+        hpText.text = Hp.ToString();
+    }
+    void Die()
+    {
+        if(hp <= 0)
+        {
+            Debug.Log("DIE");
+            igm.guideText.text = "F A I L";
+            Destroy(gameObject);
+        }
     }
 }

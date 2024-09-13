@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9027518579885920184}
   - component: {fileID: 533084693708806792}
-  - component: {fileID: -1815966575492543276}
   - component: {fileID: -860537176649345853}
   - component: {fileID: 2369133416364131854}
   - component: {fileID: 7035435510219277468}
+  - component: {fileID: -2896100716618191961}
   m_Layer: 0
   m_Name: BossSlime
   m_TagString: Monster
@@ -88,19 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1815966575492543276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7722585551740493872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf052058a79e234c952b9971a8fa1e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 500
 --- !u!61 &-860537176649345853
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,3 +181,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2896100716618191961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7722585551740493872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb6ef4e0cb5b8840a6dca352fc2399c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  igm: {fileID: 0}
+  hp: 500

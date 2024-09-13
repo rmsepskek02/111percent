@@ -8,9 +8,12 @@ public class InGameManager : MonoBehaviour
 {
     public static InGameManager instance;
     public TextMeshProUGUI distance;
+    public TextMeshProUGUI guideText;
     public Slider distanceSlider;
     public float moveSpeed = 1f;
     public float currentDistance = 0f;
+    public Slider bossHpBar;
+    public TextMeshProUGUI bossHpText;
     private void Awake()
     {
         instance = this;
