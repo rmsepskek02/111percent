@@ -24,6 +24,7 @@ public class BossController : MonsterController
         igm.bossHpBar.value = hp;
         igm.bossHpBar.gameObject.SetActive(false);
         base.DestroyObj();
+
     }
     public void SetMaxHealth()
     {
