@@ -12,19 +12,17 @@ public class Warrior : Actor
     public int warriorHp;
     MonsterController mc;
     private float time = 0f;
-    PlayerController pc;
     #endregion
     protected override void Start()
     {
         base.Start();
         SetHp(warriorHp);
         SetMaxHp(Hp);
-        pc = transform.parent.gameObject.GetComponent<PlayerController>();
     }
     protected override void Update()
     {
         base.Update();
-        transform.position = pc.transform.position;
+        transform.position = transform.parent.transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
